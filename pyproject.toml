@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "demo-mistral-rag"
+description = "Demo of using Mistral API to build a RAG system for "
+version = "0.0.1"
+readme = "README.md"
+authors = ["Cheng Shen <shenchg126@gmail.com>"]
+packages = [
+    { include = "rag", from = "rag" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9 <3.10"
+mistralai = "^1.0.2"
+numpy = "^1.26.0"
+requests = "^2.7.0"
+faiss-cpu = "^1.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
