@@ -8,8 +8,9 @@ from typing import List, Optional, Tuple
 import numpy as np
 from faiss import IndexFlatL2
 
-from config import QUERY_AUGMENTATION_SYSTEM_PROMPT, RELEVANT_DOC_COUNT, document_augmented_query, QA_SYSTEM_PROMPT, \
-    INDEX_SAVE_PATH, EMBEDDING_API_CALL_CHUNK_SIZE
+from config import (EMBEDDING_API_CALL_CHUNK_SIZE, INDEX_SAVE_PATH,
+                    QA_SYSTEM_PROMPT, QUERY_AUGMENTATION_SYSTEM_PROMPT,
+                    RELEVANT_DOC_COUNT, document_augmented_query)
 from rag.llm_client import MistralLLMClient
 from rag.utils import activate_logger, construct_content
 
