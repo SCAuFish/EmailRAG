@@ -11,3 +11,7 @@ def activate_logger(name="default", level=logging.INFO,
     logger.addHandler(handler)
     logger.setLevel(level)
     return logger
+
+
+def construct_content(from_name: str, to_name: str, email_content: str) -> str:
+    return f"Email from {from_name} to {to_name} below\n{email_content}"

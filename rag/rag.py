@@ -10,7 +10,7 @@ from faiss import IndexFlatL2
 from config import QUERY_AUGMENTATION_SYSTEM_PROMPT, RELEVANT_DOC_COUNT, document_augmented_query, QA_SYSTEM_PROMPT, \
     INDEX_SAVE_PATH
 from rag.llm_client import MistralLLMClient
-from rag.utils import activate_logger
+from rag.utils import activate_logger, construct_content
 
 logger = activate_logger("rag")
 
@@ -23,6 +23,13 @@ class MistralRAG:
 
         self.load_index()
 
+    def size(self):
+        if self.data_store is not None:
+            assert self.vector_store.ntotal == len(self.data_store)
+            return len(self.data_store)
+        else:
+            return 0
+
     def load_index(self, index_path: str = INDEX_SAVE_PATH) -> None:
         if os.path.exists(index_path):
             loaded = pickle.load(open(index_path, "rb"))
@@ -31,15 +38,15 @@ class MistralRAG:
             self.data_store = loaded["data_store"]
 
             logger.info(f"Loaded index from {index_path}")
-
-        logger.warning(f"Did not find index at path {index_path}. Skipped loading")
+        else:
+            logger.warning(f"Did not find index at path {index_path}. Skipped loading")
 
     def add_jsonl(self, doc_path: str) -> None:
         all_data = []
         with open(doc_path, "r") as f:
             for line in f:
                 data = json.loads(line.strip())
-                all_data.append(f"Email from {data['from']} to {data['to']} below\n{data['content']}")
+                all_data.append(construct_content(data['from'], data['to'], data['content']))
 
         self.add_contents(all_data)
 

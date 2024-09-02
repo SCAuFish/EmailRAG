@@ -5,7 +5,7 @@ version = "0.0.1"
 readme = "README.md"
 authors = ["Cheng Shen <shenchg126@gmail.com>"]
 packages = [
-    { include = "rag", from = "rag" },
+    { include = "rag" },
 ]
 
 [tool.poetry.dependencies]
@@ -19,3 +19,6 @@ faiss-cpu = "^1.8.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+myrag = "rag.rag_cli:main"
