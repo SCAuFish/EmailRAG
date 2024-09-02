@@ -1,8 +1,8 @@
-from abc import ABC, abstractmethod
-from typing import Optional, List
+from typing import List, Optional
 
-from config import MISTRAL_API_KEY, MISTRAL_MODEL, MISTRAL_EMBED_MODEL
-from mistralai import Mistral, ChatCompletionResponse
+from mistralai import ChatCompletionResponse, Mistral
+
+from config import MISTRAL_API_KEY, MISTRAL_EMBED_MODEL, MISTRAL_MODEL
 
 
 class MistralLLMClient:

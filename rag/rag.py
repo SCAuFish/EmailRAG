@@ -1,10 +1,10 @@
 import copy
-from typing import Optional, List
+from typing import List, Optional
 
 import numpy as np
+from faiss import IndexFlatL2
 
 from rag.llm_client import MistralLLMClient
-from faiss import IndexFlatL2
 
 
 class MistralRAG:
