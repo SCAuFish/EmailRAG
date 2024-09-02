@@ -24,7 +24,7 @@ def main():
             filename = re.search(rf"{INCLUDE} (.*)", action).group(1)
             rag.add_jsonl(filename)
         elif action.startswith(ADD):
-            from_name, to_name, email_content = re.search(rf"{ADD} (.*) (.*) (.*)", action).groups()
+            from_name, to_name, email_content = re.search(rf"{ADD} (.*)->(.*): (.*)", action).groups()
             rag.add_contents([construct_content(from_name, to_name, email_content)])
         elif action.startswith(QUIT):
             break

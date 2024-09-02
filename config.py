@@ -4,6 +4,7 @@ from typing import List
 MISTRAL_API_KEY = "Q7p35bsjJqlWFy6SMCOgJHAkp8J2hH8q"
 MISTRAL_MODEL = "mistral-large-latest"
 MISTRAL_EMBED_MODEL = "mistral-embed"
+EMBEDDING_API_CALL_CHUNK_SIZE = 30
 
 # Asset config
 INDEX_SAVE_PATH = "./assets/index.pkl"
